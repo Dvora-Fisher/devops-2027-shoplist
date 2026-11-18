@@ -20,8 +20,11 @@ spec:
           image: shoplist-stats:local	
           imagePullPolicy: Never
           env:
-            - name: BACKEND_URL
-              value: http://backend:5000        # backend Service name, with http:// and port
+        - name: BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+                name: app-config
+                key: BACKEND_URL       # backend Service name, with http:// and port
           ports:
             - containerPort: 3000
           readinessProbe:

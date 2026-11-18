@@ -1,8 +1,8 @@
 apiVersion: v1
-kind: ____
+kind: configMap
 metadata:
   name: app-config
-  namespace: ____
+  namespace: shoplist
 data:
-  DB_HOST: ____
-  BACKEND_URL: ____
+  DB_HOST: postgres
+  BACKEND_URL: http://backend:5000

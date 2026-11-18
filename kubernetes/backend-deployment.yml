@@ -20,7 +20,10 @@ spec:
           imagePullPolicy: Never     # do not download: the image is already on this computer
           env:
             - name: DB_HOST
-              value: postgres           # name of the postgres Service. Not a secret, so written directly
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DB_HOST           # name of the postgres Service. Not a secret, so written directly
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
